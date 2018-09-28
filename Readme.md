@@ -1,7 +1,7 @@
 # Личный проект «YetiCave»
 
 * Студент: [Евгений Давыдов](https://htmlacademy.ru/profile/id461215).
-* Наставник: [Антон Попов] (https://htmlacademy.ru/profile/joker).
+* Наставник: [Антон Попов](https://htmlacademy.ru/profile/joker).
 
 ---
 
