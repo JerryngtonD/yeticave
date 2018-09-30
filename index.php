@@ -248,6 +248,5 @@ $goods = [
         </div>
     </div>
 </footer>
-
 </body>
 </html>
