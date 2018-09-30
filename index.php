@@ -3,6 +3,64 @@ $is_auth = (bool) rand(0, 1);
 
 $user_name = 'Константин';
 $user_avatar = 'img/user.jpg';
+$categories = array('Доски и лыжи', 'Крепления', 'Ботинки', 'Одежда', 'Инструменты', 'Разное');
+$promoIcons = array('promo__item--boards', 'promo__item--attachment',
+                    'promo__item--boots', 'promo__item--clothing',
+                    'promo__item--tools', 'promo__item--other'
+                    );
+
+$promoCategories = array();
+for ($i=0; $i < count($categories); $i++ ) {
+  $promoCategories[$categories[$i]] = $promoIcons[$i];
+}
+
+$goods = [
+  [
+    'productName' => '2014 Rossignol District Snowboard',
+    'categorie' => 'Доски и лыжи',
+    'price' => 10999,
+    'url' => 'img/lot-1.jpg',
+    'description' => 'Cноуборд'
+  ],
+  [
+    'productName' => 'DC Ply Mens 2016/2017 Snowboard',
+    'categorie' => 'Доски и лыжи',
+    'price' => 159999,
+    'url' => 'img/lot-2.jpg',
+    'description' => 'Cноуборд'
+  ],
+  [
+    'productName' => 'Крепление Union Contact Pro 2015 года размер L/XL',
+    'categorie' => 'Крепления',
+    'price' => 8000,
+    'url' => 'img/lot-3.jpg',
+    'description' => 'Крепление'
+  ],
+  [
+    'productName' => 'Ботинки для сноуборда DC Mutiny Charocal',
+    'categorie' => 'Ботинки',
+    'price' => 10999,
+    'url' => 'img/lot-4.jpg',
+    'description' => 'Ботинки для сноуборда'
+  ],
+  [
+    'productName' => 'Куртка для сноуборда DC Mutiny Charocal',
+    'categorie' => 'Ботинки',
+    'price' => 7500,
+    'url' => 'img/lot-5.jpg',
+    'description' => 'Куртка для сноуборда'
+  ],
+  [
+    'productName' => 'Маска Oakley Canopy',
+    'categorie' => 'Разное',
+    'price' => 5400,
+    'url' => 'img/lot-6.jpg',
+    'description' => 'Маска для сноуборда'
+  ],
+]
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -27,9 +85,24 @@ $user_avatar = 'img/user.jpg';
         <a class="main-header__add-lot button" href="add-lot.html">Добавить лот</a>
 
         <nav class="user-menu">
-
+          <?php if ($is_auth): ?>
+                <div class="user-menu__image">
+                  <img src="img/user.jpg" width="40" height="40" alt="Пользователь">
+                </div>
+                <div class="user-menu__logged">
+                  <p><?=$user_name;?></p>
+                </div>
+            <?php else: ?>
+                <ul class="user-menu__list">
+                  <li class="user-menu__item">
+                    <a href="#">Регистрация</a>
+                  </li>
+                  <li class="user-menu__item">
+                    <a href="#">Вход</a>
+                  </li>
+                </ul>
+          <?php endif;?>
         <!-- здесь должен быть PHP код для показа аватара пользователя -->
-
         </nav>
     </div>
 </header>
@@ -39,7 +112,12 @@ $user_avatar = 'img/user.jpg';
         <h2 class="promo__title">Нужен стафф для катки?</h2>
         <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
         <ul class="promo__list">
-            <li class="promo__item promo__item--boards">
+          <?php foreach ($promoCategories as $key => $value):  ?>
+            <li class="promo__item <?php echo $value; ?>">
+                <a class="promo__link" href="all-lots.html"><?php echo $key; ?></a>
+            </li>
+            <?php endforeach; ?>
+            <!-- <li class="promo__item promo__item--boards">
                 <a class="promo__link" href="all-lots.html">Доски и лыжи</a>
             </li>
             <li class="promo__item promo__item--attachment">
@@ -56,7 +134,7 @@ $user_avatar = 'img/user.jpg';
             </li>
             <li class="promo__item promo__item--other">
                 <a class="promo__link" href="all-lots.html">Разное</a>
-            </li>
+            </li> -->
         </ul>
     </section>
     <section class="lots">
@@ -64,7 +142,27 @@ $user_avatar = 'img/user.jpg';
             <h2>Открытые лоты</h2>
         </div>
         <ul class="lots__list">
+          <?php foreach ($goods as $good):  ?>
             <li class="lots__item lot">
+                <div class="lot__image">
+                    <img src=<?php echo $good['url']; ?> width="350" height="260" alt=<?php echo $good['description']; ?>>
+                </div>
+                <div class="lot__info">
+                    <span class="lot__category"><?php echo $good['categorie']; ?></span>
+                    <h3 class="lot__title"><a class="text-link" href="lot.html"><?php echo $good['productName']; ?></a></h3>
+                    <div class="lot__state">
+                        <div class="lot__rate">
+                            <span class="lot__amount">Стартовая цена</span>
+                            <span class="lot__cost"><?php echo $good['price']; ?><b class="rub">р</b></span>
+                        </div>
+                        <div class="lot__timer timer">
+
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <?php endforeach; ?>
+            <!-- <li class="lots__item lot">
                 <div class="lot__image">
                     <img src="img/lot-1.jpg" width="350" height="260" alt="Сноуборд">
                 </div>
@@ -81,7 +179,7 @@ $user_avatar = 'img/user.jpg';
                         </div>
                     </div>
                 </div>
-            </li>
+            </li> -->
         </ul>
     </section>
 </main>
@@ -89,6 +187,12 @@ $user_avatar = 'img/user.jpg';
 <footer class="main-footer">
     <nav class="nav">
         <ul class="nav__list container">
+          <?php foreach ($categories as $categorie):  ?>
+              <li class="nav__item">
+                  <a href="all-lots.html"><?php echo $categorie; ?></a>
+              </li>
+            <?php endforeach; ?>
+          <!--
             <li class="nav__item">
                 <a href="all-lots.html">Доски и лыжи</a>
             </li>
@@ -106,7 +210,7 @@ $user_avatar = 'img/user.jpg';
             </li>
             <li class="nav__item">
                 <a href="all-lots.html">Разное</a>
-            </li>
+            </li> -->
         </ul>
     </nav>
     <div class="main-footer__bottom container">
