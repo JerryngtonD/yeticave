@@ -2,17 +2,14 @@
 $is_auth = (bool) rand(0, 1);
 $user_name = 'Константин';
 $user_avatar = 'img/user.jpg';
-$categories = array('Доски и лыжи', 'Крепления', 'Ботинки', 'Одежда', 'Инструменты', 'Разное');
-$promoIcons = array('promo__item--boards', 'promo__item--attachment',
-                    'promo__item--boots', 'promo__item--clothing',
-                    'promo__item--tools', 'promo__item--other'
-                    );
-
-$promoCategories = array();
-for ($i=0; $i < count($categories); $i++ ) {
-  $promoCategories[$categories[$i]] = $promoIcons[$i];
-}
-
+$categories = [
+  'promo__item--boards' => 'Доски и лыжи',
+  'promo__item--attachment' => 'Крепления',
+  'promo__item--boots' => 'Ботинки',
+  'promo__item--clothing' => 'Одежда',
+  'promo__item--tools' => 'Инструменты',
+  'promo__item--other' => 'Разное'
+];
 $goods = [
   [
     'productName' => '2014 Rossignol District Snowboard',
@@ -57,8 +54,6 @@ $goods = [
     'description' => 'Маска для сноуборда'
   ],
 ]
-
-
 
 ?>
 <!DOCTYPE html>
@@ -111,9 +106,9 @@ $goods = [
         <h2 class="promo__title">Нужен стафф для катки?</h2>
         <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
         <ul class="promo__list">
-          <?php foreach ($promoCategories as $key => $value):  ?>
-            <li class="promo__item <?php echo $value; ?>">
-                <a class="promo__link" href="all-lots.html"><?php echo $key; ?></a>
+          <?php foreach ($categories as $iconCategorie => $categorie):  ?>
+            <li class="promo__item <?php echo $iconCategorie; ?>">
+                <a class="promo__link" href="all-lots.html"><?php echo $categorie; ?></a>
             </li>
             <?php endforeach; ?>
             <!-- <li class="promo__item promo__item--boards">
