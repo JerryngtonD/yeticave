@@ -96,7 +96,6 @@ $goods = [
                   </li>
                 </ul>
           <?php endif;?>
-        <!-- здесь должен быть PHP код для показа аватара пользователя -->
         </nav>
     </div>
 </header>
@@ -111,24 +110,6 @@ $goods = [
                 <a class="promo__link" href="all-lots.html"><?php echo $categorie; ?></a>
             </li>
             <?php endforeach; ?>
-            <!-- <li class="promo__item promo__item--boards">
-                <a class="promo__link" href="all-lots.html">Доски и лыжи</a>
-            </li>
-            <li class="promo__item promo__item--attachment">
-                <a class="promo__link" href="all-lots.html">Крепления</a>
-            </li>
-            <li class="promo__item promo__item--boots">
-                <a class="promo__link" href="all-lots.html">Ботинки</a>
-            </li>
-            <li class="promo__item promo__item--clothing">
-                <a class="promo__link" href="all-lots.html">Одежда</a>
-            </li>
-            <li class="promo__item promo__item--tools">
-                <a class="promo__link" href="all-lots.html">Инструменты</a>
-            </li>
-            <li class="promo__item promo__item--other">
-                <a class="promo__link" href="all-lots.html">Разное</a>
-            </li> -->
         </ul>
     </section>
     <section class="lots">
@@ -150,30 +131,11 @@ $goods = [
                             <span class="lot__cost"><?php echo $good['price']; ?><b class="rub">р</b></span>
                         </div>
                         <div class="lot__timer timer">
-
                         </div>
                     </div>
                 </div>
             </li>
             <?php endforeach; ?>
-            <!-- <li class="lots__item lot">
-                <div class="lot__image">
-                    <img src="img/lot-1.jpg" width="350" height="260" alt="Сноуборд">
-                </div>
-                <div class="lot__info">
-                    <span class="lot__category">Доски и лыжи</span>
-                    <h3 class="lot__title"><a class="text-link" href="lot.html">2014 Rossignol District Snowboard</a></h3>
-                    <div class="lot__state">
-                        <div class="lot__rate">
-                            <span class="lot__amount">Стартовая цена</span>
-                            <span class="lot__cost">10 999<b class="rub">р</b></span>
-                        </div>
-                        <div class="lot__timer timer">
-
-                        </div>
-                    </div>
-                </div>
-            </li> -->
         </ul>
     </section>
 </main>
@@ -186,25 +148,6 @@ $goods = [
                   <a href="all-lots.html"><?php echo $categorie; ?></a>
               </li>
             <?php endforeach; ?>
-          <!--
-            <li class="nav__item">
-                <a href="all-lots.html">Доски и лыжи</a>
-            </li>
-            <li class="nav__item">
-                <a href="all-lots.html">Крепления</a>
-            </li>
-            <li class="nav__item">
-                <a href="all-lots.html">Ботинки</a>
-            </li>
-            <li class="nav__item">
-                <a href="all-lots.html">Одежда</a>
-            </li>
-            <li class="nav__item">
-                <a href="all-lots.html">Инструменты</a>
-            </li>
-            <li class="nav__item">
-                <a href="all-lots.html">Разное</a>
-            </li> -->
         </ul>
     </nav>
     <div class="main-footer__bottom container">
