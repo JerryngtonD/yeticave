@@ -54,8 +54,25 @@ $goods = [
     'description' => 'Маска для сноуборда'
   ],
 ]
-
 ?>
+
+<?php
+function getFormattedPrice($priceValue)
+{
+  $intPart = ceil($priceValue);
+  $stringRepresentation = (string) $intPart;
+    if ($intPart < 1000) {
+        $fullFormattedPrice = $stringRepresentation . ' ₽';
+        return $fullFormattedPrice;
+    } elseif ($intPart > 1000){
+       $begingPart = substr($stringRepresentation, 0, -3);
+       $endPart = substr($stringRepresentation, -3, 3);
+       $fullFormattedPrice = $begingPart . ' ' . $endPart . ' ₽';
+       return $fullFormattedPrice;
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -128,7 +145,7 @@ $goods = [
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая цена</span>
-                            <span class="lot__cost"><?php echo $good['price']; ?><b class="rub">р</b></span>
+                            <span class="lot__cost"><?php echo getFormattedPrice($good['price']); ?></span>
                         </div>
                         <div class="lot__timer timer">
                         </div>
